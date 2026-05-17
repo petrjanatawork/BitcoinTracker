@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinTracker", "BitcoinTracker.csproj", "{709F6459-64D5-4D53-A853-C9714AC73049}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinTracker.Tests", "BitcoinTracker.Tests\BitcoinTracker.Tests.csproj", "{74B3AE5E-2F8F-4E24-B12C-F612A7B9BF7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{709F6459-64D5-4D53-A853-C9714AC73049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709F6459-64D5-4D53-A853-C9714AC73049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709F6459-64D5-4D53-A853-C9714AC73049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709F6459-64D5-4D53-A853-C9714AC73049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B3AE5E-2F8F-4E24-B12C-F612A7B9BF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B3AE5E-2F8F-4E24-B12C-F612A7B9BF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B3AE5E-2F8F-4E24-B12C-F612A7B9BF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B3AE5E-2F8F-4E24-B12C-F612A7B9BF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+# Copy solution and project files for layer caching
+COPY BitcoinTracker.sln ./
+COPY BitcoinTracker.csproj ./
+COPY BitcoinTracker.Tests/BitcoinTracker.Tests.csproj ./BitcoinTracker.Tests/
+
+# Restore dependencies (cached layer)
+RUN dotnet restore
+
+# Copy all source code
+COPY . .
+
+# Default command: run tests with code coverage
+ENTRYPOINT ["dotnet", "test", "BitcoinTracker.Tests/BitcoinTracker.Tests.csproj", "--collect:\"XPlat Code Coverage\"", "-v", "normal"]

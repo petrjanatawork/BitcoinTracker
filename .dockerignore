@@ -1,0 +1,12 @@
+**/.git
+**/bin
+**/obj
+**/out
+**/logs
+**/.vscode
+**/.vs
+docker-compose.yml
+Dockerfile
+.dockerignore
+.gitignore
+README.md

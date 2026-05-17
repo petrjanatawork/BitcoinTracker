@@ -1,0 +1,115 @@
+@{
+    ViewData["Title"] = "Bitcoin Tracker";
+}
+
+@section Styles {
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <style>
+        /* Loading spinner overlay */
+        .spinner-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .spinner-overlay.active {
+            display: flex;
+        }
+        .spinner {
+            width: 48px; height: 48px;
+            border: 5px solid #e0e0e0;
+            border-top-color: #0d6efd;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @@keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Inline spinner for save/delete buttons */
+        .btn-spinner {
+            display: none;
+            width: 16px; height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .btn-loading .btn-spinner {
+            display: inline-block;
+        }
+    </style>
+}
+
+<div class="container py-5">
+    <!-- Loading spinner overlay -->
+    <div id="loading-overlay" class="spinner-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <h1 class="mb-4">Bitcoin Tracker (.NET)</h1>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Aktuální kurz</h5>
+                    <div id="live-rate" class="display-6 mb-3">Načítání...</div>
+                    <button id="save-rate" class="btn btn-primary">
+                        Uložit data
+                        <span class="btn-spinner"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+             <canvas id="priceChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Uložená data</h5>
+            <div id="saved-data-loading" class="text-center py-3" style="display:none;">
+                <div class="spinner"></div>
+                <p class="mt-2 text-muted">Načítám uložená data...</p>
+            </div>
+            <div class="table-responsive">
+                <table id="rates-table" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>BTC/EUR</th>
+                            <th>BTC/CZK</th>
+                            <th>Poznámka</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody id="saved-data-body">
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <button id="save-changes" class="btn btn-success">
+                    Uložit změny
+                    <span class="btn-spinner"></span>
+                </button>
+                <button id="delete-selected" class="btn btn-danger">
+                    Smazat vybrané záznamy
+                    <span class="btn-spinner"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/bitcoin-tracker.js" asp-append-version="true"></script>
+}
